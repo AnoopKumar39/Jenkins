@@ -9,8 +9,8 @@ pipeline {
          }
          stage('Two') {
              steps {
-                 sh label: '', script: '''echo -e "\e31mHello World!\e0m"
-                 echo -e "\e41mBye Bye!\e0m"'''
+                 sh label: '', script: '''echo -e "\e[31mHello World!\e[0m"
+                 echo -e "\e[41mBye Bye!\e[0m"'''
              }
          }
      }
