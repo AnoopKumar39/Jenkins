@@ -9,7 +9,7 @@ pipeline {
          }
          stage('Two') {
              steps {
-                 sh label: '', script: '''echo -e "\e[31mHello World\e[0m"
+                 sh label: '', script: '''echo Hello There
                  echo Hey There'''
              }
          }
