@@ -11,8 +11,6 @@ job('DSL-Tutorial-1-Test') {
 }
 
 
-#### second job
-
 job('DSL-Tutorial-2-Test') {
     scm {
         git('git://github.com/quidryan/aws-sdk-test.git')
