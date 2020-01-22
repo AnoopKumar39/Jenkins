@@ -22,3 +22,15 @@ job('DSL-Tutorial-2-Test') {
         maven('-e clean test')
     }
 }
+
+job('DSL-Tutorial-3-Test') {
+    scm {
+        git('git://github.com/quidryan/aws-sdk-test.git')
+    }
+    triggers {
+        scm('H/15 * * * *')
+    }
+    steps {
+        maven('-e clean test')
+    }
+}
