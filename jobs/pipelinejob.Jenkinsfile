@@ -13,5 +13,11 @@ pipeline {
                  echo Hey There'''
              }
          }
+         stage('three') {
+             steps {
+                 sh label: '', script: '''echo Hello There
+                 echo Hey There'''
+             }
+         }
      }
 }
