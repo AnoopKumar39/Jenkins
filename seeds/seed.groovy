@@ -1,4 +1,4 @@
-pipelineJob('PipelineJob') {
+pipelineJob('Sample') {
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -14,7 +14,7 @@ pipelineJob('PipelineJob') {
           }
         }
       }
-      'scriptPath'('jobs/pipelinejob.Jenkinsfile')
+      'scriptPath'('jobs/sample')
       'lightweight'(true)
     }
   }
