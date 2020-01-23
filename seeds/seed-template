@@ -1,0 +1,21 @@
+pipelineJob('sample') {
+  configure { flowdefinition ->
+    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
+      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
+        'userRemoteConfigs' {
+          'hudson.plugins.git.UserRemoteConfig' {
+            'url'('https://gitlab.com/d40/jenkins.git')
+            'credentialsId'('GitUserPass')
+          }
+        }
+        'branches' {
+          'hudson.plugins.git.BranchSpec' {
+            'name'('*/master')
+          }
+        }
+      }
+      'scriptPath'('jobs/sample1.Jenkinsfile')
+      'lightweight'(true)
+    }
+  }
+}
