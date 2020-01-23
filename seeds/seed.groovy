@@ -1,25 +1,21 @@
-job('DSL-Tutorial-Test') {
-    scm {
-        git('git://github.com/quidryan/aws-sdk-test.git')
+pipelineJob('PipelineJob') {
+  configure { flowdefinition ->
+    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
+      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
+        'userRemoteConfigs' {
+          'hudson.plugins.git.UserRemoteConfig' {
+            'url'('https://github.com/AnoopKumar39/Jenkins.git')
+            'credentialsId'('GitUserPass')
+          }
+        }
+        'branches' {
+          'hudson.plugins.git.BranchSpec' {
+            'name'('*/master')
+          }
+        }
+      }
+      'scriptPath'('jobs/pipelinejob.Jenkinsfile')
+      'lightweight'(true)
     }
-    triggers {
-        scm('H/15 * * * *')
-    }
-    steps {
-        maven('-e clean test')
-    }
+  }
 }
-
-job('DSL-Tutorial-1-Test') {
-    scm {
-        git('git://github.com/quidryan/aws-sdk-test.git')
-    }
-    triggers {
-        scm('H/15 * * * *')
-    }
-    steps {
-        maven('-e clean test')
-    }
-}
-
-
