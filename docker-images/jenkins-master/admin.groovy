@@ -4,9 +4,9 @@ import jenkins.security.s2m.AdminWhitelistRule
 import jenkins.model.JenkinsLocationConfiguration
 import net.sf.json.JSONObject
 
-// import jenkins.security.QueueItemAuthenticatorConfiguration
-// import org.jenkinsci.plugins.authorizeproject.GlobalQueueItemAuthenticator
-// import org.jenkinsci.plugins.authorizeproject.strategy.TriggeringUsersAuthorizationStrategy
+import jenkins.security.QueueItemAuthenticatorConfiguration
+import org.jenkinsci.plugins.authorizeproject.GlobalQueueItemAuthenticator
+import org.jenkinsci.plugins.authorizeproject.strategy.TriggeringUsersAuthorizationStrategy
 
 println("=== Configuring users")
 
@@ -33,8 +33,8 @@ instance.save()
 location.save()
 
 
-// println("=== Configure Authorize Project")
-// GlobalQueueItemAuthenticator auth = new GlobalQueueItemAuthenticator(
-//     new TriggeringUsersAuthorizationStrategy()
-// )
-// QueueItemAuthenticatorConfiguration.get().authenticators.add(auth)
+println("=== Configure Authorize Project")
+GlobalQueueItemAuthenticator auth = new GlobalQueueItemAuthenticator(
+    new TriggeringUsersAuthorizationStrategy()
+)
+QueueItemAuthenticatorConfiguration.get().authenticators.add(auth)
