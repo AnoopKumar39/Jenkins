@@ -1,0 +1,2 @@
+FROM    jenkins/jenkins:lts-alpine
+COPY    admin.groovy /usr/share/jenkins/ref/init.groovy.d/admin.groovy
