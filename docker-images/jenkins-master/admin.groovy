@@ -11,7 +11,7 @@ import net.sf.json.JSONObject
 println("=== Configuring users")
 
 def instance = Jenkins.getInstance()
-String admin_email = 'raghuk.vit@gmail.com'
+String admin_email = 'anoopkumar.nasarapu@gmail.com'
 JenkinsLocationConfiguration location = instance.getExtensionList('jenkins.model.JenkinsLocationConfiguration')[0]
  
 def adminUsername = System.getenv("ADMIN_USERNAME")
