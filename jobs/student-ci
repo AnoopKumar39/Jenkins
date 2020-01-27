@@ -18,8 +18,7 @@ pipeline {
           }
           stage('Maven Compile') {
               steps {
-                  sh label: '', script: '''mvn compile
-                  echo $SONAR_TOKEN | base 64'''
+                  sh label: '', script: 'mvn compile'
               }
           }
           stage('CodeQualityCheck') {
