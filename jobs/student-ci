@@ -4,6 +4,12 @@ pipeline {
             label 'MAVEN'
         }
     }
+    environment {
+        SONAR_URL="sonar.devopsprac.ml"
+        SONAR_TOKEN=credentials('StudentappToken')
+
+
+    }
       stages {
           stage('Cloning Repo') {
               steps {
@@ -13,6 +19,14 @@ pipeline {
           stage('Maven Compile') {
               steps {
                   sh label: '', script: 'mvn compile'
+              }
+          }
+          stage('CodeQualityCheck') {
+              steps {
+                  sh label: '', script: '''mvn sonar:sonar \\
+                   -Dsonar.projectKey=Student-CI \\
+                   -Dsonar.host.url=http://${SONAR_URL}:9000 \\
+                   -Dsonar.login=${SONAR_TOKEN}'''
               }
           }
       }
