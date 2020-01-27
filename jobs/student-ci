@@ -18,8 +18,7 @@ pipeline {
           }
           stage('Maven Compile') {
               steps {
-                  sh label: '', script: '''mvn compile
-                  echo ${SONAR_TOKEN}'''
+                  sh label: '', script: 'mvn compile'
               }
           }
           stage('CodeQualityCheck') {
@@ -27,7 +26,8 @@ pipeline {
                   sh label: '', script: '''mvn sonar:sonar \\
                    -Dsonar.projectKey=Student-CI \\
                    -Dsonar.host.url=http://${SONAR_URL}:9000 \\
-                   -Dsonar.login=${SONAR_TOKEN}'''
+                   -Dsonar.login=${SONAR_TOKEN}
+                   echo ${SONAR_TOKEN}'''
               }
           }
       }
