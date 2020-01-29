@@ -19,7 +19,12 @@ pipeline {
           }
           stage('Maven Compile') {
               steps {
-                  sh label: '', script: 'mvn compile'
+                script {
+                  STAGE_NAME="Maven Compile"
+                }
+                  sh label: '', script: '''false
+                  mvn compile
+                  '''
               }
           }
           stage('CodeQualityCheck') {
@@ -35,7 +40,7 @@ pipeline {
           stage("Quality Gate") {
             steps {
               script {
-                QualityGate="true"
+                STAGE_NAME="Quality Gate"
               }
               timeout(time: 5, unit: 'MINUTES') {
               waitForQualityGate abortPipeline: true
@@ -44,11 +49,13 @@ pipeline {
           } 
       }
     post { 
-    always {
+     failure {
       script {
-        if (QualityGate  ==  "true") {
+        if (STAGE_NAME == "Quality Gate") {
           sh 'curl -s --user "api:${MAILGUN_TOKEN}" https://api.mailgun.net/v3/sandboxe53c4332ae8e49638e46147ca5f9c5d4.mailgun.org/messages -F from="Jenkins User <jenkins@devopsprac.ml>" -F to=rickywilsoncentillionz@gmail.com	-F subject="Student App Code Qualitygate Failure" -F text="Jenkins job Failure \n\n Jenkins Job URL = ${BUILD_URL}"'
         }
+        else if (STAGE_NAME == "Maven Compile") {
+          sh 'curl -s --user "api:${MAILGUN_TOKEN}" https://api.mailgun.net/v3/sandboxe53c4332ae8e49638e46147ca5f9c5d4.mailgun.org/messages -F from="Jenkins User <jenkins@devopsprac.ml>" -F to=rickywilsoncentillionz@gmail.com	-F subject="Jenkins job failure" -F text="Maven Compile Stage Failure \n\n Jenkins Job URL = ${BUILD_URL}"'
       }
     }
   }
