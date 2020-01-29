@@ -56,8 +56,10 @@ pipeline {
         }
         else if (STAGE_NAME == "CodeQualityCheck") {
           sh 'curl -s --user "api:${MAILGUN_TOKEN}" https://api.mailgun.net/v3/sandboxe53c4332ae8e49638e46147ca5f9c5d4.mailgun.org/messages -F from="Jenkins User <jenkins@devopsprac.ml>" -F to=rickywilsoncentillionz@gmail.com	-F subject="Jenkins job failure" -F text="CodeQualityCheck Stage Failure \n\n Jenkins Job URL = ${BUILD_URL}"'
+        }
+
       }
+     }
     }
-  }
 
 }
