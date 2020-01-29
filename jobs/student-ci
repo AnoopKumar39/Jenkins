@@ -7,6 +7,7 @@ pipeline {
     environment {
         SONAR_URL="sonar.devopsprac.ml"
         SONAR_TOKEN=credentials('StudentappToken')
+        MAILGUN_TOKEN=credentials('MailGun-Token')
 
 
     }
@@ -33,10 +34,28 @@ pipeline {
           }
           stage("Quality Gate") {
             steps {
+              script {
+                QualityGate="true"
+              }
               timeout(time: 5, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
+              waitForQualityGate abortPipeline: true
               }
             }
           } 
       }
+    post { 
+    always {
+      script {
+        if (QualityGate  ==  "true") {
+          sh label: '', script: '''curl -s --user \'api:${MAILGUN_TOKEN}\' \\
+	      https://api.mailgun.net/v3/sandboxe53c4332ae8e49638e46147ca5f9c5d4.mailgun.org/messages \\
+	      -F from=\'Jenkins User <jenkins@devopsprac.ml>\' \\
+	      -F to=rickywilsoncentillionz@gmail.com \\
+	      -F subject=\'Student App Code Qualitygate Failure\' \\
+	      -F text=\'Jenkins job Failure \\n\\n Jenkins Job URL = ${BUILD_URL}\''''
+        }
+      }
+    }
+  }
+
 }
