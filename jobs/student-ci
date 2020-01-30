@@ -52,7 +52,7 @@ pipeline {
             steps {
               sh '''
               mvn package
-              cp target/*.war student.war
+              cp target/*.war ansible/student.war
               '''
             }
           }
