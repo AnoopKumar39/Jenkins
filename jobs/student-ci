@@ -36,7 +36,7 @@ pipeline {
           //      }
           //    }
           //}
-          //stage("Quality Gate") {
+          //stage('Quality Gate') {
           //  steps {
           //    script {
           //      STAGE_NAME="Quality Gate"
@@ -45,7 +45,14 @@ pipeline {
           //    waitForQualityGate abortPipeline: true
           //    }
           //  }
-          //} 
+          //}
+          stage('Build War') {
+            steps {
+              sh '''
+              mvn package
+              '''
+            }
+          } 
       }
     post { 
      failure {
