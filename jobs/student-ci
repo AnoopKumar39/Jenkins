@@ -23,29 +23,29 @@ pipeline {
                   '''
               }
           }
-          stage('CodeQualityCheck') {
-              steps {
-                script {
-                  STAGE_NAME="CodeQualityCheck"
-                }
-                withSonarQubeEnv('SonarQube') {
-                  sh label: '', script: '''mvn sonar:sonar \\
-                   -Dsonar.projectKey=Student-CI \\
-                   -Dsonar.host.url=http://${SONAR_URL}:9000 \\
-                   -Dsonar.login=${SONAR_TOKEN}'''
-                }
-              }
-          }
-          stage("Quality Gate") {
-            steps {
-              script {
-                STAGE_NAME="Quality Gate"
-              }
-              timeout(time: 5, unit: 'MINUTES') {
-              waitForQualityGate abortPipeline: true
-              }
-            }
-          } 
+          //stage('CodeQualityCheck') {
+          //    steps {
+          //      script {
+          //        STAGE_NAME="CodeQualityCheck"
+          //      }
+          //      withSonarQubeEnv('SonarQube') {
+          //        sh label: '', script: '''mvn sonar:sonar \\
+          //         -Dsonar.projectKey=Student-CI \\
+          //         -Dsonar.host.url=http://${SONAR_URL}:9000 \\
+          //         -Dsonar.login=${SONAR_TOKEN}'''
+          //      }
+          //    }
+          //}
+          //stage("Quality Gate") {
+          //  steps {
+          //    script {
+          //      STAGE_NAME="Quality Gate"
+          //    }
+          //    timeout(time: 5, unit: 'MINUTES') {
+          //    waitForQualityGate abortPipeline: true
+          //    }
+          //  }
+          //} 
       }
     post { 
      failure {
