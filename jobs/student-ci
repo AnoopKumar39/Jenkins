@@ -51,8 +51,6 @@ pipeline {
           stage('Build War') {
             steps {
               sh '''
-              env
-              false
               mvn package
               '''
             }
@@ -60,7 +58,7 @@ pipeline {
           stage('Deploy War File'){
             steps {
               sh '''
-              echo ${TEST_NODE}>hosts
+              echo ${TEST_NODE} ansible_user=${SSH_USR} ansible_password=${SSH_PSW} >hosts
               ansible-playbook -i hosts ansible/deploy.yml
               '''
             }
