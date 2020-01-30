@@ -29,8 +29,7 @@ pipeline {
                   STAGE_NAME="CodeQualityCheck"
                 }
                 withSonarQubeEnv('SonarQube') {
-                  sh label: '', script: '''false
-                   mvn sonar:sonar \\
+                  sh label: '', script: '''mvn sonar:sonar \\
                    -Dsonar.projectKey=Student-CI \\
                    -Dsonar.host.url=http://${SONAR_URL}:9000 \\
                    -Dsonar.login=${SONAR_TOKEN}'''
