@@ -59,6 +59,7 @@ pipeline {
             steps {
               sh '''
               echo ${TEST_NODE} ansible_user=${SSH_USR} ansible_password=${SSH_PSW} >hosts
+              export ANSIBLE_HOST_KEY_CHECKING=False
               ansible-playbook -i hosts ansible/deploy.yml
               '''
             }
