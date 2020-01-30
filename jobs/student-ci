@@ -50,6 +50,8 @@ pipeline {
           stage('Build War') {
             steps {
               sh '''
+              env
+              false
               mvn package
               '''
             }
