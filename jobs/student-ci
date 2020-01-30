@@ -9,6 +9,7 @@ pipeline {
         SONAR_TOKEN=credentials('StudentappToken')
         MAILGUN_TOKEN=credentials('MailGun-Token')
         TEST_NODE="testhost.devopsprac.ml"
+        SSH=credentials('SSH_ROOT')
 
 
     }
