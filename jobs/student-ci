@@ -69,7 +69,7 @@ pipeline {
             steps {
               git credentialsId: 'GitUserPass', url: 'https://github.com/AnoopKumar39/Selenium.git'
               sh '''
-               mvn clean install "-Dremote=true" "-DseleniumGridURL=http://18.208.183.225:4444/wd/hub" "-Dbrowser=Chrome" //"-Doverwrite.binaries=true"
+               mvn clean install "-Dremote=true" "-DseleniumGridURL=http://172-31-85-222:4444/wd/hub" "-Dbrowser=Chrome" //"-Doverwrite.binaries=true"
               '''
             }
           } 
