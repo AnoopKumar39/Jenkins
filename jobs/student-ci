@@ -74,7 +74,7 @@ pipeline {
           //    '''
           //  }
           //}
-          stage('Upload Artofacts') {
+          stage('Upload Artifacts') {
             steps {
               sh '''
                 //mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
