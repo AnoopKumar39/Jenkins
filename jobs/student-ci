@@ -82,9 +82,6 @@ pipeline {
           } 
       }
     post {
-      always {
-        deleteDir()
-      }
      failure {
       script {
         if (STAGE_NAME == "Quality Gate") {
