@@ -56,15 +56,15 @@ pipeline {
               '''
             }
           }
-          stage('Deploy War File'){
-            steps {
-              sh '''
-              echo ${TEST_NODE} ansible_user=${SSH_USR} ansible_password=${SSH_PSW} >hosts
-              export ANSIBLE_HOST_KEY_CHECKING=False
-              ansible-playbook -i hosts ansible/deploy.yml
-              '''
-            }
-          }
+          //stage('Deploy War File'){
+          //  steps {
+          //    sh '''
+          //    echo ${TEST_NODE} ansible_user=${SSH_USR} ansible_password=${SSH_PSW} >hosts
+          //    export ANSIBLE_HOST_KEY_CHECKING=False
+          //    ansible-playbook -i hosts ansible/deploy.yml
+          //    '''
+          //  }
+          //}
           //stage('Test the Application'){
           //  steps {
           //    git credentialsId: 'GitUserPass', url: 'https://github.com/AnoopKumar39/Selenium.git'
