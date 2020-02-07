@@ -86,7 +86,7 @@ pipeline {
       }
     post {
       always {
-        deletDir()
+        deleteDir()
       }
      failure {
       script {
