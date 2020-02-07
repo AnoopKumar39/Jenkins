@@ -10,6 +10,7 @@ pipeline {
         MAILGUN_TOKEN=credentials('MailGun-Token')
         TEST_NODE="testhost.devopsprac.ml"
         SSH=credentials('SSH_ROOT')
+        NEXUS_SERVER="nexus.devopsprac.ml"
 
 
     }
@@ -72,7 +73,15 @@ pipeline {
           //      mvn clean install "-Dremote=true" "-DseleniumGridURL=http://172.31.85.222:4444/wd/hub" "-Dbrowser=Chrome" //"-Doverwrite.binaries=true"
           //    '''
           //  }
-          //} 
+          //}
+          stage('Upload Artofacts') {
+            steps {
+              sh '''
+                //mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
+                mvn deploy
+              '''
+            }
+          } 
       }
     post { 
      failure {
