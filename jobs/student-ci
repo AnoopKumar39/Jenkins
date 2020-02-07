@@ -53,7 +53,7 @@ pipeline {
             steps {
               sh '''
               mvn package
-              //cp target/*.war ansible/student.war
+          //    cp target/*.war ansible/student.war
               '''
             }
           }
@@ -78,8 +78,8 @@ pipeline {
             steps {
               sh '''
                 true
-                //mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
-                //mvn deploy
+          //      mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
+          //      mvn deploy
               '''
             }
           } 
