@@ -78,7 +78,7 @@ pipeline {
           stage('Upload Artifacts') {
             steps {
               sh '''
-                mvn -s settings.xml deploy -DNEXUS_USR=${NEXUS_USR} -DNEXUS_PSW=${NEXUS_PSW}
+                mvn -s settings.xml deploy -DNEXUS_USR=admin -DNEXUS_PSW=pass
               '''
             }
           } 
