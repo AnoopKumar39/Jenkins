@@ -53,6 +53,7 @@ pipeline {
             steps {
               sh '''
               mvn package
+              cp target/*.war ansible/student.war
               '''
             }
           }
@@ -76,12 +77,15 @@ pipeline {
           stage('Upload Artifacts') {
             steps {
               sh '''
-                true
+                mvn deploy
               '''
             }
           } 
       }
     post {
+      always {
+        deleteDir()
+      }
      failure {
       script {
         if (STAGE_NAME == "Quality Gate") {
