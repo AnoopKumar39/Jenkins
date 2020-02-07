@@ -77,8 +77,6 @@ pipeline {
             steps {
               sh '''
                 true
-                //mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
-                //mvn deploy
               '''
             }
           } 
