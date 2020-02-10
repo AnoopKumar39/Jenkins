@@ -21,7 +21,7 @@ pipeline {
       steps {
         sh '''
           mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
-          echo RELEASE_VERSION
+          echo ${RELEASE_VERSION}
         '''
       }
     }
