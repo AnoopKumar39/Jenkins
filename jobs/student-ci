@@ -11,7 +11,7 @@ pipeline {
         TEST_NODE="testhost.devopsprac.ml"
         SSH=credentials('SSH_ROOT')
         NEXUS_SERVER="nexus.devopsprac.ml"
-        NEXUS=credentials('Nexus_Cred')
+        NEXUS=credentials('Nexus-Cred')
 
 
     }
@@ -78,7 +78,7 @@ pipeline {
           stage('Upload Artifacts') {
             steps {
               sh '''
-                mvn -s settings.xml deploy
+                mvn -s settings.xml deploy -DNEXUS_USR=${NEXUS_USR} -DNEXUS_PSW=${NEXUS_PSW}
               '''
             }
           } 
