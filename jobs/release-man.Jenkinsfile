@@ -21,19 +21,18 @@ pipeline {
       steps {
         sh '''
           mvn versions:set -DnewVersion=${RELEASE_VERSION}-RELEASE
-          echo ${RELEASE_VERSION}
         '''
       }
     }
 
 
-    // stage('Upload Artifacts') {
-    //   steps {
-    //     sh '''
-    //       mvn clean package
-    //       mvn -s settings.xml deploy -DNEXUS_USR=${NEXUS_USR} -DNEXUS_PSW=${NEXUS_PSW}
-    //     '''
-    //   }
-    // } 
+    stage('Upload Artifacts') {
+      steps {
+        sh '''
+          mvn clean package
+          mvn -s settings.xml deploy -DNEXUS_USR=${NEXUS_USR} -DNEXUS_PSW=${NEXUS_PSW}
+        '''
+      }
+    } 
   }
 }
