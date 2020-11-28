@@ -73,3 +73,4 @@ pipelineJob('Studentapp-Auto') {
 #####Scriptpath ('jobs/ajc')
 ############
 #####Scriptpath ('jobs/ajc')
+#####Scriptpath ('jobs/ajc')
