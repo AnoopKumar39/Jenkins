@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('one') {
+            steps {
+                sh 'echo -e "\\e[31mHello World\\nThis one is from sample pipeline script\\e[0m"'
+            }
+        }
+        stage('two') {
+            steps {
+                sh 'echo -e "\\e[31mHello World-Second Stage\\nThis one is from sample pipeline script\\e[0m"'
+            }
+        }
+        stage('three') {
+            steps {
+                sh 'echo -e "\\e[31mHello World-Third Stage\\nThis one is from sample pipeline script\\e[0m"'
+            }
+        }
+    }
