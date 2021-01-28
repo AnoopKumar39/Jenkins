@@ -8,7 +8,7 @@ pipelineJob('StudentApp-UI-CI') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
         'userRemoteConfigs' {
           'hudson.plugins.git.UserRemoteConfig' {
-            'url'('https://https://github.com/AnoopKumar39/Jenkins.git')
+            'url'('https://github.com/AnoopKumar39/Jenkins.git')
             'credentialsId'('Git-cred')
           }
         }
