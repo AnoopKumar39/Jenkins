@@ -23,3 +23,20 @@ job('DSL-Tutorial-2-Test') {
         maven('-e clean test')
     }
 }
+
+///////////////////////////
+
+pipelineJob('github-demo') {
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        github('jenkinsci/pipeline-examples')
+                    }
+                }
+            }
+            scriptPath('declarative-examples/simple-examples/environmentInStage.groovy')
+        }
+    }
+}
