@@ -8,8 +8,8 @@ pipelineJob('StudentApp-UI-CI') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
         'userRemoteConfigs' {
           'hudson.plugins.git.UserRemoteConfig' {
-            'url'('https://gitlab.com/d40/jenkins.git')
-            'credentialsId'('GitUserPass')
+            'url'('https://https://github.com/AnoopKumar39/Jenkins.git')
+            'credentialsId'('Git-cred')
           }
         }
         'branches' {
@@ -18,7 +18,7 @@ pipelineJob('StudentApp-UI-CI') {
           }
         }
       }
-      'scriptPath'('jobs/studentapp-ui-ci.Jenkinsfile')
+      'scriptPath'('jobs/student-ci')
       'lightweight'(true)
     }
   }
