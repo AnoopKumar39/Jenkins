@@ -1,1 +1,24 @@
-
+pipeline {
+    agent {
+        node {
+            label 'MAVEN'
+        }
+    }
+    stages {
+        stage('git-cloning') {
+            stpes {
+                git credentialsId: 'Git-cred', url: 'https://github.com/AnoopKumar39/Studentapp-ui.git'
+            }
+        }
+        stage(compiling-stage) {
+            stpes {
+                sh 'mvn clean compile package'
+            }
+        }
+        stage(changing-war-file-name) {
+            steps {
+                sh 'mv target/*.war target/studentapp.war'
+            }
+        }
+    }
+}
