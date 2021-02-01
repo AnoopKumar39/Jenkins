@@ -10,12 +10,12 @@ pipeline {
                  git credentialsId: 'Git-cred', url: 'https://github.com/AnoopKumar39/Studentapp-ui.git'
              }
          }
-         stage(compiling-stage) {
+         stage('compiling-stage') {
              steps {
                  sh 'mvn clean compile package'
              }
          }
-         stage(changing-war-file-name) {
+         stage('changing-war-file-name') {
              steps {
                  sh 'mv target/*.war target/studentapp.war'
              }
