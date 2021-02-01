@@ -21,8 +21,8 @@ pipelineJob('sample-ci-job') {
   }
 }
 
-//MY-OWN
-pipelineJob('my-own') {
+//studentapp-ui-ci
+pipelineJob('studentapp-ui-ci') {
 //  parameters {
 //        stringParam('RELEASE_VERSION', '', 'RELEASE_VERSION Ex: 0.0.1')
 //  }
@@ -41,7 +41,7 @@ pipelineJob('my-own') {
           }
         }
       }
-      'scriptPath'('jobs/my-own')
+      'scriptPath'('jobs/student-ci')
       'lightweight'(true)
     }
   }
