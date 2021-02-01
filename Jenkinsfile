@@ -21,11 +21,11 @@ pipelineJob('sample-ci-job') {
   }
 }
 
-//StudentApp-UI-CI
-pipelineJob('StudentApp-UI-CI') {
-  parameters {
-        stringParam('RELEASE_VERSION', '', 'RELEASE_VERSION Ex: 0.0.1')
-  }
+//MY-OWN
+pipelineJob('my-own') {
+//  parameters {
+//        stringParam('RELEASE_VERSION', '', 'RELEASE_VERSION Ex: 0.0.1')
+//  }
   configure { flowdefinition ->
     flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
       'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
@@ -41,7 +41,7 @@ pipelineJob('StudentApp-UI-CI') {
           }
         }
       }
-      'scriptPath'('jobs/student-ci')
+      'scriptPath'('jobs/my-own')
       'lightweight'(true)
     }
   }
