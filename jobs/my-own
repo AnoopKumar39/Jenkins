@@ -6,12 +6,12 @@ pipeline {
     }
      stages {
          stage('git-cloning') {
-             stpes {
+             steps {
                  git credentialsId: 'Git-cred', url: 'https://github.com/AnoopKumar39/Studentapp-ui.git'
              }
          }
          stage(compiling-stage) {
-             stpes {
+             steps {
                  sh 'mvn clean compile package'
              }
          }
