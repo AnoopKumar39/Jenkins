@@ -18,7 +18,7 @@ pipeline {
       stages {
           stage('Cloning Repo') {
               steps {
-                  git credentialsId: 'GitUserPass', url: 'https://github.com/AnoopKumar39/studentapp-ui.git'
+                  git credentialsId: 'Git-cred', url: 'https://github.com/AnoopKumar39/studentapp-ui.git'
               }
           }
           stage('Maven Compile') {
