@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'MAVEN'
-        }
-    }
+    agent any
     stages {
         stage('cloning repo') {
             steps {
