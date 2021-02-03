@@ -4,7 +4,7 @@ pipeline {
         stage('cloning repo') {
             steps {
                 git credentialsId: 'Git-cred', url: 'https://github.com/AnoopKumar39/studentapp-ui.git'
-                env
+                sh 'env'
             }
         }
         stage('compiling code and packing') {
